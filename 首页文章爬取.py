@@ -34,3 +34,5 @@ for article in arts:
 df1=pd.DataFrame(articles)
 df1.to_csv('data.csv', encoding= 'utf-8',index=False) 
 print("数据已保存到 data.csv")
+next_page = soup3.find('a', class_="nextPage  js__ajaxSearchTrigger")
+print(next_page)
