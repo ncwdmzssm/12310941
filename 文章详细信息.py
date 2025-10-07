@@ -39,6 +39,9 @@ try:
     times=tags[1].get_text(strip=True) if len(tags)>1 else '无时间信息'
     journal=soup.find('span',class_="journal-heading").find('a').get_text(strip=True)
     volume=soup.find_all('span',class_="issue-heading")[0].get_text(strip=True)
+    abstrat=soup.find('p',class_='last').get_text(strip=True)
+    keywords=soup.find_all('a',class_='kwd-btn keyword-click')
+    keywords=[k.get_text(strip=True) for k in keywords]
     detail_data.append({
         'title': title,
         'authors': authors,
@@ -46,6 +49,8 @@ try:
         ,'time': times
         ,'journal': journal
         ,'volume': volume
+        ,'abstrat': abstrat
+        ,'keywords': keywords
     })
 except Exception as e:  
     print(f"解析文章时出错: {e}")

@@ -1,4 +1,4 @@
-#文章详细信息
+#文章详细信息-成功版
 from bs4 import BeautifulSoup
 import pandas as pd
 from urllib.parse import urljoin 
@@ -55,17 +55,23 @@ with sync_playwright() as p:
             times=tags[1].get_text(strip=True) if len(tags)>1 else '无时间信息'
             journal=soup.find('span',class_="journal-heading").find('a').get_text(strip=True)
             volume=soup.find_all('span',class_="issue-heading")[0].get_text(strip=True)
+            abstract=soup.find('p',class_='last').get_text(strip=True)
+            keywords=soup.find_all('a',class_='kwd-btn keyword-click')
+            keywords=[k.get_text(strip=True) for k in keywords]
             detail_data.append({
                 'title': title,
-                'authors': authors,
-                'pages': pages
+                'authors': authors
                 ,'time': times
                 ,'journal': journal
                 ,'volume': volume
+                ,'pages': pages
+                ,'abstract': abstract
+                ,'keywords': keywords
+                ,'link': link
             })
         except Exception as e:  
             print(f"解析文章时出错: {e}")
-        i+=1
+        i+=1 
         time.sleep(random.uniform(2, 5))
     browser.close()
 detail_data=pd.DataFrame(detail_data)
