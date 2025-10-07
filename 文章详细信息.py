@@ -30,7 +30,6 @@ with sync_playwright() as p:
 
 detail_data = []
 soup = BeautifulSoup(page_content, 'html.parser')
-print('trying now')
 try:
     title=soup.find('span',class_='NLM_article-title hlFld-title').get_text(strip=True) 
     authors=soup.find_all('a',class_='author')
