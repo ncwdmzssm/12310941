@@ -12,7 +12,6 @@ with sync_playwright() as p:
     page.goto("https://www.tandfonline.com/journals/mmis20")
     page.screenshot(path="example.png")
     page_content = page.content()
-    print(page_content)
     browser.close()
 
 soup3=BeautifulSoup(page_content, 'html.parser')
