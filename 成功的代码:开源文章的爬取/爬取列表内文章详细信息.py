@@ -25,7 +25,6 @@ detail_data = []
 
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=False,args=["--disable-blink-features=AutomationControlled"])
-
     page = browser.new_page(user_agent=random.choice(USER_AGENTS))
     # 隐藏自动化痕迹
     page.add_init_script("""
