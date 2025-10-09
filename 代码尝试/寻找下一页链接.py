@@ -1,11 +1,9 @@
 #寻找下一页链接
-import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from urllib.parse import urljoin 
 import time 
 import random 
-import requests
 from playwright.sync_api import sync_playwright
 USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",

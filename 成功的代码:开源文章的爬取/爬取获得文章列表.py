@@ -1,10 +1,8 @@
-import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from urllib.parse import urljoin 
 import time 
 import random 
-import requests
 from playwright.sync_api import sync_playwright
 
 base_url = "https://www.tandfonline.com/action/showOpenAccess?journalCode=mmis20"
